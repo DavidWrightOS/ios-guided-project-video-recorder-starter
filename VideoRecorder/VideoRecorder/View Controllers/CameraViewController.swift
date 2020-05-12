@@ -44,6 +44,12 @@ class CameraViewController: UIViewController {
             captureSession.sessionPreset = .hd1920x1080
         }
         
+        guard captureSession.canAddOutput(fileOutput) else {
+            preconditionFailure("This session can't handle this type of output: \(fileOutput)")
+        }
+        
+        captureSession.addOutput(fileOutput)
+        
         captureSession.commitConfiguration() // finished configuring session
         
         cameraView.session = captureSession
