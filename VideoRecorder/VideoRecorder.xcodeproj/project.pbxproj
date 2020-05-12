@@ -41,6 +41,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		634D2D30246A3C39002C479D /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BD891F2D234504D00035EB8C /* CameraViewController.swift */,
+				BD891F41234505DB0035EB8C /* ViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		634D2D31246A3C45002C479D /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				BD891F3F234505930035EB8C /* Main.storyboard */,
+				BD891F34234504D20035EB8C /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		634D2D32246A3C5F002C479D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BD891F3D2345055E0035EB8C /* CameraPreviewView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		634D2D33246A3C77002C479D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BD891F29234504D00035EB8C /* AppDelegate.swift */,
+				BD891F2B234504D00035EB8C /* SceneDelegate.swift */,
+				BD891F32234504D20035EB8C /* Assets.xcassets */,
+				BD891F37234504D20035EB8C /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		BD891F1D234504D00035EB8C = {
 			isa = PBXGroup;
 			children = (
@@ -60,15 +97,10 @@
 		BD891F28234504D00035EB8C /* VideoRecorder */ = {
 			isa = PBXGroup;
 			children = (
-				BD891F29234504D00035EB8C /* AppDelegate.swift */,
-				BD891F2B234504D00035EB8C /* SceneDelegate.swift */,
-				BD891F2D234504D00035EB8C /* CameraViewController.swift */,
-				BD891F3D2345055E0035EB8C /* CameraPreviewView.swift */,
-				BD891F41234505DB0035EB8C /* ViewController.swift */,
-				BD891F3F234505930035EB8C /* Main.storyboard */,
-				BD891F32234504D20035EB8C /* Assets.xcassets */,
-				BD891F34234504D20035EB8C /* LaunchScreen.storyboard */,
-				BD891F37234504D20035EB8C /* Info.plist */,
+				634D2D30246A3C39002C479D /* View Controllers */,
+				634D2D32246A3C5F002C479D /* Views */,
+				634D2D31246A3C45002C479D /* Storyboards */,
+				634D2D33246A3C77002C479D /* Resources */,
 			);
 			path = VideoRecorder;
 			sourceTree = "<group>";
@@ -286,7 +318,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VXUQXR6S56;
-				INFOPLIST_FILE = VideoRecorder/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/VideoRecorder/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,7 +336,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VXUQXR6S56;
-				INFOPLIST_FILE = VideoRecorder/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/VideoRecorder/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
