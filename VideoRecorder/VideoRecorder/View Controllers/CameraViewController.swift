@@ -47,6 +47,7 @@ class CameraViewController: UIViewController {
     
     private func setupCamera() {
         let camera = bestCamera()
+        let microphone = bestMicrophone()
         
         captureSession.beginConfiguration() // begin configuring session
         
@@ -54,8 +55,16 @@ class CameraViewController: UIViewController {
             preconditionFailure("Can't create an input from the camera, but we should do something better than crashing!")
         }
         
+        guard let microphoneInput = try? AVCaptureDeviceInput(device: microphone) else {
+            preconditionFailure("Can't create an input from the microphone, but we should do something better than crashing!")
+        }
+        
         guard captureSession.canAddInput(cameraInput) else {
             preconditionFailure("This session can't handle this type of input: \(cameraInput)")
+        }
+        
+        guard captureSession.canAddInput(microphoneInput) else {
+            preconditionFailure("This session can't handle this type of input: \(microphoneInput)")
         }
         
         captureSession.addInput(cameraInput)
@@ -84,6 +93,14 @@ class CameraViewController: UIViewController {
         }
         
         preconditionFailure("No cameras on device match the specs that we need")
+    }
+    
+    private func bestMicrophone() -> AVCaptureDevice {
+        if let device = AVCaptureDevice.default(for: .audio) {
+            return device
+        }
+        
+        preconditionFailure("No microphones on device match the specs that we need")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -135,8 +152,6 @@ extension CameraViewController: AVCaptureFileOutputRecordingDelegate {
         }
         
         print("Video URL: \(outputFileURL)")
-        print("Video URL: \(outputFileURL.absoluteURL)")
-        print("Video URL: \(outputFileURL.absoluteString)")
         updateViews()
         playMovie(url: outputFileURL)
     }
