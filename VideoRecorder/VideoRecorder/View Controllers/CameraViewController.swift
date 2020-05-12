@@ -98,5 +98,26 @@ class CameraViewController: UIViewController {
 		let fileURL = documentsDirectory.appendingPathComponent(name).appendingPathExtension("mov")
 		return fileURL
 	}
+    
+    private func updateViews() {
+        recordButton.isSelected = fileOutput.isRecording
+    }
 }
 
+extension CameraViewController: AVCaptureFileOutputRecordingDelegate {
+    
+    func fileOutput(_ output: AVCaptureFileOutput, didStartRecordingTo fileURL: URL, from connections: [AVCaptureConnection]) {
+        updateViews()
+    }
+    
+    func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
+        if let error = error {
+            print("Error saving video: \(error)")
+        }
+        
+        print("Video URL: \(outputFileURL)")
+        print("Video URL: \(outputFileURL.absoluteURL)")
+        print("Video URL: \(outputFileURL.absoluteString)")
+        updateViews()
+    }
+}
